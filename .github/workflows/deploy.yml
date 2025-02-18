@@ -23,6 +23,9 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
         with:
           region: us-east-1
+          mask-password: false
+          registry-type: private
+          skip-logout: false
 
       # Build Docker image and tag it
       - name: Build Docker image
