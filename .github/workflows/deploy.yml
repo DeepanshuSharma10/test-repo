@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main  # Trigger the workflow on push to the 'main' branch
-##
+###
 jobs:
   build_and_deploy:
     runs-on: [self-hosted]  # Ensure it runs on your self-hosted GitHub runner
@@ -21,6 +21,8 @@ jobs:
       # Log in to Amazon ECR
       - name: Log in to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
+        with:
+          region: ${{ secrets.AWS_REGION }}
 
       # Build Docker image and tag it
       - name: Build Docker image
